@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeffrey Sarmiento — Senior Deal Desk Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1F3A;
+    --navy-2:#12294f;
+    --paper:#F6F7F9;
+    --paper-2:#ffffff;
+    --ink:#1B2431;
+    --ink-soft:#4B5568;
+    --steel:#2B5FA3;
+    --gold:#B8935F;
+    --line:#DFE3E9;
+    --good:#3E7C5A;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'IBM Plex Serif', serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,247,249,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-family:'IBM Plex Serif',serif;font-weight:600;font-size:1.1rem;}
+  .navlinks{display:flex;gap:28px;font-size:0.88rem;color:var(--ink-soft);}
+  .navlinks a{text-decoration:none;transition:color .15s;}
+  .navlinks a:hover{color:var(--navy);}
+  .cta-small{
+    background:var(--navy);color:#fff;padding:8px 18px;border-radius:2px;
+    text-decoration:none;font-size:0.85rem;font-weight:500;
+  }
+  @media (max-width:760px){.navlinks{display:none;}}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:linear-gradient(180deg,var(--navy) 0%, var(--navy-2) 100%);
+    color:#fff;
+    padding:96px 0 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;right:-120px;top:-120px;
+    width:420px;height:420px;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:50%;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    text-transform:uppercase;letter-spacing:0.14em;
+    font-size:0.72rem;color:var(--gold);
+    margin-bottom:18px;
+  }
+  header.hero h1{
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    font-weight:500;
+    max-width:820px;
+    color:#fff;
+  }
+  header.hero .role{
+    font-size:clamp(1.05rem,2vw,1.3rem);
+    color:#C9D3E3;
+    margin-top:14px;
+    font-weight:400;
+  }
+  header.hero .summary{
+    max-width:640px;
+    color:#B9C4D6;
+    margin-top:26px;
+    font-size:0.97rem;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:12px 22px;font-size:0.88rem;font-weight:500;
+    text-decoration:none;border-radius:2px;transition:all .15s;
+  }
+  .btn-primary{background:var(--gold);color:var(--navy);}
+  .btn-primary:hover{background:#c9a476;}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.3);color:#fff;}
+  .btn-ghost:hover{border-color:#fff;}
+
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1px;background:rgba(255,255,255,0.12);
+    margin-top:56px;border:1px solid rgba(255,255,255,0.12);
+  }
+  .stat{background:var(--navy-2);padding:22px 20px;}
+  .stat .num{font-family:'IBM Plex Serif',serif;font-size:1.6rem;color:#fff;}
+  .stat .label{font-size:0.74rem;color:#9FADC4;margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;}
+  @media (max-width:700px){.hero-stats{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:80px 0;}
+  .section-head{margin-bottom:44px;max-width:640px;}
+  .section-head .eyebrow{color:var(--steel);}
+  .section-head h2{font-size:1.9rem;color:var(--navy);font-weight:500;}
+  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:0.96rem;}
+
+  /* ---------- PIPELINE (signature element) ---------- */
+  #pipeline{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .pipeline-track{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+  .pipeline-stage{
+    padding:28px 24px;border-right:1px solid var(--line);
+    position:relative;
+  }
+  .pipeline-stage:last-child{border-right:none;}
+  .pipeline-stage .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;
+    color:var(--steel);text-transform:uppercase;letter-spacing:0.08em;
+  }
+  .pipeline-stage h3{
+    font-size:1.05rem;color:var(--navy);margin-top:10px;font-weight:600;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .pipeline-stage p{font-size:0.85rem;color:var(--ink-soft);margin-top:8px;}
+  .pipeline-stage::before{
+    content:"";position:absolute;right:-1px;top:50%;transform:translate(50%,-50%);
+    width:8px;height:8px;background:var(--gold);border-radius:50%;
+    z-index:2;
+  }
+  .pipeline-stage:last-child::before{display:none;}
+  @media (max-width:800px){
+    .pipeline-track{grid-template-columns:1fr;}
+    .pipeline-stage{border-right:none;border-bottom:1px solid var(--line);}
+    .pipeline-stage::before{display:none;}
+  }
+  .pipeline-metrics{display:flex;gap:28px;flex-wrap:wrap;margin-top:24px;}
+  .metric-chip{
+    font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--navy);
+    background:#EEF2F8;border:1px solid var(--line);padding:6px 12px;border-radius:2px;
+  }
+
+  /* ---------- COMPETENCIES ---------- */
+  .comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .comp-item{background:var(--paper-2);padding:22px 22px;}
+  .comp-item .n{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--gold);}
+  .comp-item div.label{font-size:0.94rem;margin-top:8px;color:var(--navy);font-weight:500;}
+  @media (max-width:700px){.comp-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:460px){.comp-grid{grid-template-columns:1fr;}}
+
+  /* ---------- EXPERIENCE ---------- */
+  .job{
+    border-left:2px solid var(--line);
+    padding:0 0 40px 28px;position:relative;
+  }
+  .job:last-child{padding-bottom:0;}
+  .job::before{
+    content:"";position:absolute;left:-6px;top:4px;width:10px;height:10px;
+    background:var(--paper);border:2px solid var(--steel);border-radius:50%;
+  }
+  .job-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;}
+  .job-head h3{font-size:1.15rem;color:var(--navy);font-weight:600;font-family:'IBM Plex Sans',sans-serif;}
+  .job-head .dates{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--ink-soft);white-space:nowrap;}
+  .job .company{color:var(--steel);font-size:0.92rem;margin-top:2px;font-weight:500;}
+  .job ul{margin:14px 0 0;padding-left:18px;}
+  .job li{margin-bottom:8px;font-size:0.92rem;color:var(--ink-soft);}
+  .job.condensed ul{display:none;}
+  .job .toggle{
+    display:none;
+  }
+  details.job-more summary{
+    cursor:pointer;font-size:0.85rem;color:var(--steel);margin-top:12px;font-weight:500;
+    list-style:none;
+  }
+  details.job-more summary::marker{content:"";}
+  details.job-more summary::-webkit-details-marker{display:none;}
+  details.job-more summary::after{content:" ▸ show details";}
+  details.job-more[open] summary::after{content:" ▾ hide details";}
+  details.job-more ul{margin-top:14px;}
+  .era-label{
+    font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;
+    font-size:0.72rem;color:var(--gold);margin:48px 0 20px;
+  }
+  .era-label:first-child{margin-top:0;}
+
+  /* ---------- EDUCATION / FOOTER ---------- */
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media (max-width:700px){.edu-grid{grid-template-columns:1fr;}}
+  .edu-card{background:var(--paper-2);border:1px solid var(--line);padding:24px;}
+  .edu-card h3{font-size:1rem;color:var(--navy);font-weight:600;font-family:'IBM Plex Sans',sans-serif;}
+  .edu-card .dates{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--ink-soft);margin-top:6px;}
+  .edu-card p{font-size:0.88rem;color:var(--ink-soft);margin-top:8px;}
+
+  footer{
+    background:var(--navy);color:#C9D3E3;padding:56px 0 32px;
+  }
+  footer h2{color:#fff;font-size:1.6rem;font-weight:500;}
+  footer p{color:#9FADC4;margin-top:10px;max-width:520px;font-size:0.92rem;}
+  .footer-contacts{display:flex;gap:24px;margin-top:28px;flex-wrap:wrap;}
+  .footer-contacts a{
+    text-decoration:none;color:#fff;font-size:0.9rem;
+    border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:2px;
+  }
+  .footer-bottom{
+    margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12);
+    font-size:0.78rem;color:#7A8AA8;
+  }
+
+  ::selection{background:var(--gold);color:var(--navy);}
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--steel);outline-offset:2px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Jeffrey Sarmiento</div>
+    <div class="navlinks">
+      <a href="#pipeline">Deal Lifecycle</a>
+      <a href="#competencies">Competencies</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+    </div>
+    <a class="cta-small" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Revenue Operations · Deal Desk · Commercial Strategy</div>
+    <h1>Turning complex B2B deals into clean, compliant revenue.</h1>
+    <div class="role">Senior Deal Desk Analyst — 10+ years across Quote‑to‑Cash, Order‑to‑Cash, and Salesforce CPQ in global SaaS organizations</div>
+    <p class="summary">I sit at the intersection of Sales, Finance, and Legal — pricing and structuring renewals and licensing deals, keeping Salesforce data clean, and making sure revenue is recognized correctly under ASC 606 and IFRS 15. Currently supporting Strategic Accounts across Central & Eastern Europe and Austria for S&P Global.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#experience">View experience</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">10+ yrs</div><div class="label">SaaS Revenue Ops</div></div>
+      <div class="stat"><div class="num">EMEA</div><div class="label">Strategic Accounts Coverage</div></div>
+      <div class="stat"><div class="num">ASC 606</div><div class="label">/ IFRS 15 Compliance</div></div>
+      <div class="stat"><div class="num">CPQ</div><div class="label">Salesforce Revenue Cloud</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="pipeline">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How a deal moves through my desk</div>
+      <h2>Quote‑to‑Cash, end to end</h2>
+      <p>Every renewal or new license I touch moves through the same four checkpoints — this is the lifecycle I own and reconcile daily.</p>
+    </div>
+    <div class="pipeline-track">
+      <div class="pipeline-stage">
+        <div class="tag">01 · Configure</div>
+        <h3>Quote &amp; Pricing</h3>
+        <p>Price and build licensing/renewal quotes in Salesforce CPQ, aligned with sales strategy for strategic accounts.</p>
+      </div>
+      <div class="pipeline-stage">
+        <div class="tag">02 · Execute</div>
+        <h3>Contract &amp; Order</h3>
+        <p>Coordinate contracts, amendments, and consolidations with Legal and Order Management for clean execution.</p>
+      </div>
+      <div class="pipeline-stage">
+        <div class="tag">03 · Fulfill</div>
+        <h3>Billing &amp; Invoicing</h3>
+        <p>Structure billing splits and invoicing with Fulfillment, Client Financial Relations, and Collections.</p>
+      </div>
+      <div class="pipeline-stage">
+        <div class="tag">04 · Recognize</div>
+        <h3>Revenue &amp; Reporting</h3>
+        <p>Validate ACV, MRR, ARR, and NRR across Salesforce and Power BI, in line with ASC 606 / IFRS 15.</p>
+      </div>
+    </div>
+    <div class="pipeline-metrics">
+      <span class="metric-chip">ACV</span>
+      <span class="metric-chip">MRR</span>
+      <span class="metric-chip">ARR</span>
+      <span class="metric-chip">NRR</span>
+      <span class="metric-chip">Closed Won</span>
+    </div>
+  </div>
+</section>
+
+<section id="competencies">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Toolkit</div>
+      <h2>Core competencies</h2>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-item"><div class="n">01</div><div class="label">Quote‑to‑Cash (QTC)</div></div>
+      <div class="comp-item"><div class="n">02</div><div class="label">Order‑to‑Cash (OTC)</div></div>
+      <div class="comp-item"><div class="n">03</div><div class="label">Lead‑to‑Cash (L2C)</div></div>
+      <div class="comp-item"><div class="n">04</div><div class="label">Salesforce Revenue Cloud &amp; CPQ</div></div>
+      <div class="comp-item"><div class="n">05</div><div class="label">Salesforce CPQ Lightning</div></div>
+      <div class="comp-item"><div class="n">06</div><div class="label">Contract Renewals &amp; Licensing</div></div>
+      <div class="comp-item"><div class="n">07</div><div class="label">Revenue Recognition (ASC 606 / IFRS 15)</div></div>
+      <div class="comp-item"><div class="n">08</div><div class="label">SAP Concur — Travel, Expense &amp; Invoice</div></div>
+      <div class="comp-item"><div class="n">09</div><div class="label">Deal Desk Support</div></div>
+      <div class="comp-item"><div class="n">10</div><div class="label">Microsoft 365 Suite</div></div>
+      <div class="comp-item"><div class="n">11</div><div class="label">Sales Operations</div></div>
+      <div class="comp-item"><div class="n">12</div><div class="label">Process Improvement</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Career history</div>
+      <h2>Professional experience</h2>
+      <p>Ten years, nine months in SaaS revenue operations, preceded by five years, two months in telecommunications support and sales — the foundation for the customer-facing rigor I bring to deal desk work today.</p>
+    </div>
+
+    <div class="era-label">SaaS Environment — 10 years, 9 months</div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Senior Deal Desk, Revenue Execution — Sales Operations — Commercial Strategy</h3>
+        <span class="dates">Jun 2025 — Present</span>
+      </div>
+      <div class="company">S&amp;P Global</div>
+      <ul>
+        <li>Primary point of contact for Strategic Accounts across Central &amp; Eastern Europe and Austria (EMEA), partnering with Account Executives and Managers on renewal pipelines, Salesforce data integrity, and account operations.</li>
+        <li>Supported migration of FS Legacy opportunities to Salesforce Sales Cloud and CPQ, validating opportunity data and commercial terms for a seamless transition.</li>
+        <li>Owns end-to-end renewal and licensing lifecycle for an assigned territory through Closed Won.</li>
+      </ul>
+      <details class="job-more">
+        <summary>Full scope of responsibilities</summary>
+        <ul>
+          <li>Developed, priced, and processed licensing and renewal quotes in Salesforce CPQ for high-value strategic accounts.</li>
+          <li>Supported front-line teams through the Order-to-Cash process, coordinating with Legal, Order Management, Fulfillment, Client Financial Relations, Cash Application, and Collections.</li>
+          <li>Managed complex renewal and licensing transactions — contract amendments, consolidations, billing splits, and invoice structuring — while validating ACV, MRR, ARR, and NRR across Salesforce and Power BI.</li>
+          <li>Partnered with Legal, Order Management, and Collections to review contracts, process invoicing updates, and validate purchase order requirements.</li>
+          <li>Supported end-to-end QTC operations across contracts, licensing, orders, billing, invoicing, and AR while maintaining policy compliance.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Revenue Operations II — Deal Desk (SAP Vendor &amp; TMC Partners)</h3>
+        <span class="dates">Jan 2023 — Mar 2025</span>
+      </div>
+      <div class="company">SAP Concur</div>
+      <ul>
+        <li>Supported end-to-end QTC lifecycle for SAP Concur Travel solutions with Sales, Account Teams, and third-party reseller partners.</li>
+        <li>Served as primary operational point of contact for external partners, resolving complex order requests within policy.</li>
+        <li>Maintained Salesforce CRM and CPQ data integrity, improving reporting accuracy and pipeline visibility.</li>
+      </ul>
+      <details class="job-more">
+        <summary>Full scope of responsibilities</summary>
+        <ul>
+          <li>Collaborated with Account Executives, Travel Management Companies (TMCs), Project Managers, and Implementation Consultants on licensing and onboarding.</li>
+          <li>Partnered cross-functionally with Sales, Finance, Legal, Product, and Customer Success on revenue-generating initiatives.</li>
+          <li>Used Salesforce reporting and CRM dashboards to monitor opportunity progression and operational metrics.</li>
+          <li>Supported order validation, licensing administration, and billing coordination in accordance with US GAAP ASC 606.</li>
+          <li>Built working relationships across internal teams and external partners to streamline processes and improve efficiency.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Services Enablement Specialist II (Client Onboarding) — Corporate Partners and IT</h3>
+        <span class="dates">Jan 2021 — Jan 2023</span>
+      </div>
+      <div class="company">SAP Concur</div>
+      <ul>
+        <li>Managed customer lifecycle operations sales-to-service, including licensing provisioning and implementation setup for SAP Concur Travel, Expense, and Invoice modules.</li>
+        <li>Administered Salesforce accounts, opportunities, contacts, user roles, and module access, including deactivation and termination.</li>
+      </ul>
+      <details class="job-more">
+        <summary>Full scope of responsibilities</summary>
+        <ul>
+          <li>Supported deployment, licensing, and configuration using Salesforce Lightning and CT&amp;E (SAP Concur CRM).</li>
+          <li>Collaborated with Sales, Customer Success, Implementation Specialists, and Configuration Analysts on onboarding.</li>
+          <li>Customized workflows and system configurations to client requirements, balancing efficiency, retention, and best practice.</li>
+          <li>Processed termination and shutdown requests while ensuring data integrity and compliance.</li>
+          <li>Identified process improvement and automation opportunities to enhance scalability and customer experience.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Support Analyst II, User Support Desk (SAP CTE — Travel &amp; Expense, Invoice)</h3>
+        <span class="dates">2017 — 2021</span>
+      </div>
+      <div class="company">SAP Concur</div>
+      <ul>
+        <li>Subject Matter Expert and escalation point for complex travel, expense, invoice, and account management issues.</li>
+        <li>Provided Tier 2 support, investigating recurring issues and performing root cause analysis to reduce ticket volume.</li>
+      </ul>
+      <details class="job-more">
+        <summary>Full scope of responsibilities</summary>
+        <ul>
+          <li>Managed escalated cases from Level 1 support within established SLAs.</li>
+          <li>Guided users and team members on system functionality, expense policy, and travel process best practices.</li>
+          <li>Partnered with Product Support, Technical Teams, Finance, and Operations to resolve complex cases.</li>
+          <li>Mentored junior analysts and led knowledge-sharing sessions; maintained SOPs and knowledge base articles.</li>
+          <li>Supported month-end, quarter-end, and year-end reconciliation and expense processing.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Support Analyst I, User Support Desk (SAP CTE — Travel &amp; Expense, Invoice)</h3>
+        <span class="dates">2015 — 2017</span>
+      </div>
+      <div class="company">SAP Concur</div>
+      <ul>
+        <li>Provided end-user support across phone, chat, email, and support portals for expense, travel, and invoice issues.</li>
+        <li>Investigated and resolved expense report exceptions, audit flags, duplicate transactions, and reimbursement concerns.</li>
+      </ul>
+      <details class="job-more">
+        <summary>Full scope of responsibilities</summary>
+        <ul>
+          <li>Supported month-end, quarter-end, and year-end expense reconciliation and addendum processing.</li>
+          <li>Assisted employees with travel booking concerns including airfare, hotels, and car rentals.</li>
+          <li>Managed user provisioning and deprovisioning, profile setup, and permission updates.</li>
+          <li>Documented support cases and coordinated escalations within agreed service-level targets.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="era-label">Early Career — Telecommunications, 5 years, 2 months</div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Retention Account Executive — Comcast</h3>
+        <span class="dates">Feb 2015 — Sep 2015</span>
+      </div>
+      <div class="company">Teleperformance, Makati</div>
+      <ul>
+        <li>Front-line technical and retention resource for Triple Play services (Video/Cable, Internet, Home Phone).</li>
+        <li>Conducted account reviews and processed upgrades, downgrades, and service changes toward retention and CSAT targets.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Quality Analyst, Comcast Processes</h3>
+        <span class="dates">May 2014 — Nov 2014</span>
+      </div>
+      <div class="company">West Contact Services, Makati</div>
+      <ul>
+        <li>Handled escalated technical tickets requiring senior-level resolution and monitoring.</li>
+        <li>Mentored new Technical Support Representatives and rolled out new sales and troubleshooting processes to Team Leads.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Senior Technical Support Tier II — Comcast</h3>
+        <span class="dates">Dec 2013 — May 2014</span>
+      </div>
+      <div class="company">West Contact Services, Makati</div>
+      <ul>
+        <li>Handled complex cable troubleshooting with a transition into sales once issues were resolved.</li>
+        <li>Achieved <strong>Rank 1</strong> in sales for a fiscal month, out of 350+ team members.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Senior Technical Support Tier II — Telstra Telecom Australia</h3>
+        <span class="dates">Jul 2012 — Oct 2013</span>
+      </div>
+      <div class="company">Teletech, Roxas</div>
+      <ul>
+        <li>Handled cable, internet, and mobile phone support, including outage communication and billing concerns.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3>Sales Representative</h3>
+        <span class="dates">Jul 2010 — Jun 2012</span>
+      </div>
+      <div class="company">US Auto Parts, Mandaluyong City</div>
+      <ul>
+        <li>Provided inside sales and post-sales support for automotive replacement parts, matching parts to vehicle specifications for mechanics and retail customers.</li>
+        <li>Transitioned from voice sales to non-voice back-end support handling case documentation and follow-ups.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Background</div>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3>International Electronics Technical Institute</h3>
+        <div class="dates">Jun 2008 — Sep 2010 · Pasay City</div>
+        <p>Information and Communication Technologies (ICT), specialization in Hardware and Networking.</p>
+      </div>
+      <div class="edu-card">
+        <h3>Perpetual Help College of Manila</h3>
+        <div class="dates">2004 — 2006 · Manila</div>
+        <p>BS Nursing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's talk about your revenue operations needs.</h2>
+    <p>Open to Senior Deal Desk, Revenue Operations, and Sales Operations roles in global B2B/SaaS organizations. References from S&amp;P Global and SAP Concur available on request.</p>
+    <div class="footer-contacts">
+      <a href="mailto:jeff.sarmiento070812@gmail.com">jeff.sarmiento070812@gmail.com</a>
+      <a href="tel:+639217277574">0921‑727‑7574</a>
+      <a href="https://linkedin.com/in/jeffrey-sarmiento-3519021b1" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="#" onclick="return false;">Pasay City, Philippines</a>
+    </div>
+    <div class="footer-bottom">© 2026 Jeffrey Sarmiento. Built for Senior Deal Desk Analyst opportunities.</div>
+  </div>
+</footer>
+
+</body>
+</html>
